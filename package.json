@@ -1,49 +1,44 @@
 {
   "name": "fastify-socket.io",
-  "version": "5.1.0",
-  "private": false,
-  "main": "dist/index.js",
+  "version": "4.0.0",
+  "description": "Fastify plugin for socket.io",
+  "main": "index.js",
+  "types": "./types/index.d.ts",
   "scripts": {
-    "build": "tsc --noEmit && tsup-node",
-    "format": "rome format --write .",
-    "lint": "rome check .",
-    "preinstall": "npx only-allow pnpm",
-    "prepare": "husky install",
-    "prepublish": "pnpm build",
-    "release": "pnpm build && changeset publish",
-    "test": "tsx --test ./test/*.ts",
-    "test:watch": "tsx --watch --test ./test/*.ts",
-    "test:coverage": "c8 --all --src src --reporter lcov --reporter text tsx --test ./test/*.ts"
+    "lint": "standard",
+    "test": "npm run lint && npm run unit && cd types && npm run test",
+    "typescript": "tsd",
+    "unit": "tap --100 test/*.test.js"
   },
+  "author": "Alessandro Magionami - @alemagio",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ducktors/fastify-socket.io.git"
+    "url": "git+https://github.com/alemagio/fastify-socket.io.git"
   },
+  "license": "MIT",
   "dependencies": {
-    "fastify-plugin": "^4.5.1",
-    "tslib": "^2.6.1"
+    "fastify-plugin": "^3.0.0"
   },
   "devDependencies": {
-    "@changesets/changelog-github": "^0.4.8",
-    "@changesets/cli": "^2.26.2",
-    "@ducktors/tsconfig": "^0.1.1",
-    "@types/node": "^16.18.39",
-    "c8": "^8.0.1",
+    "@types/node": "^16.11.10",
     "fastify": "^5.0.0",
-    "husky": "^8.0.3",
-    "lint-staged": "^13.2.3",
-    "rome": "11.0.0",
-    "socket.io": "^4.7.4",
-    "socket.io-client": "^4.7.4",
-    "tsup": "^6.7.0",
-    "tsx": "^4.13.0",
-    "typescript": "^4.9.5"
+    "fastify-tsconfig": "^1.0.1",
+    "socket.io": "^4.5.1",
+    "standard": "^16.0.4",
+    "tap": "^15.1.5",
+    "tsd": "^0.19.0",
+    "typescript": "^4.5.2"
   },
-  "files": [
-    "dist"
+  "keywords": [
+    "fastify",
+    "socket.io"
   ],
+  "ts-standard": {
+    "ignore": [
+      "examples"
+    ]
+  },
   "peerDependencies": {
-    "fastify": ">=4",
-    "socket.io": ">=4"
+    "socket.io": "^4.4.0"
   }
 }

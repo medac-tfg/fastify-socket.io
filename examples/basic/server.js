@@ -13,10 +13,10 @@ app.get('/', async (req, reply) => {
   reply.send(data)
 })
 
-app.ready((err) => {
+app.ready(err => {
   if (err) throw err
 
   app.io.on('connect', (socket) => console.info('Socket connected!', socket.id))
 })
 
-app.listen({ port: 3000 })
+app.listen(3000)
